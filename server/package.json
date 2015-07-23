@@ -5,6 +5,8 @@
     "express": "*",
     "http": "*",
     "socket.io": "*",
-    "mongodb": "*"
+    "mongodb": "*",
+    "bcrypt": "*",
+    "body-parser": "*"
   }
 }

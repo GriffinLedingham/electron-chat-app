@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Electron Chat App Login</title>
+    <title>Electron Chat App Signup</title>
     <script src="./vendor/jquery/dist/jquery.js"></script>
     <script src="./vendor/handlebars/handlebars.min.js"></script>
-    <script src="./script/index.js"></script>
+    <script src="./script/signup.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
   </head>
   <body onload="init();">
     <div id="msgContainer" class="absolute top-0 left-0 right-0 bottom-0 background-green">
       <div class="block margin-auto center margin-top-300">
         <input id="username" placeholder="Username" /><br>
-        <input id="password" type="password" placeholder="Password" />
+        <input type="email" id="email" placeholder="Email" /><br>
+        <input type="password" id="password" placeholder="Password" /><br>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" />
       </div>
     </div>
   </body>

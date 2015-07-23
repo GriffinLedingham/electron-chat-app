@@ -1,7 +1,11 @@
-module.exports = function(socket, io) {
+var UserModel = require('../models/user_model.js');
+
+module.exports = function(socket, io, db) {
   var that = this;
   this.socket = socket;
   this.uuid = generateUUID();
+  this.alias = null;
+  this.token = null;
 
   this.constructor.prototype.setUUID = function(uuid){
     this.uuid = uuid;
@@ -27,17 +31,39 @@ module.exports = function(socket, io) {
 
   this.constructor.prototype.initSockBindings = function(){
     this.socket.on('send',function(msg){
-      var payload = {
-        msg: msg,
-        uuid: that.uuid
-      };
-      console.log(io);
-      io.sockets.emit('rcv', payload);
+      console.log(msg);
+      console.log(that);
+      if(that.alias != null)
+      {
+        var payload = {
+          msg: msg,
+          uuid: that.uuid,
+          uname: that.alias
+        };
+        io.sockets.emit('rcv', payload);
+      }
+    });
+
+    this.socket.on('auth',function(data){
+      var uname = data.uname;
+      var token = data.token;
+
+      var userModel = new UserModel(db);
+      userModel.getUserDataObject(uname, function(docs){
+        if(docs.length == 1)
+        {
+          var user = docs[0];
+          if(token === user.token)
+          {
+            that.alias = user.uname;
+            that.token = user.token;
+          }
+        }
+      });
     });
   };
 
   this.initSockBindings();
-
 };
 
 var generateUUID = function(){

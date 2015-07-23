@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Electron Chat App</title>
+    <script src="./vendor/jquery/dist/jquery.js"></script>
+    <script src="./vendor/handlebars/handlebars.min.js"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="./script/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+  </head>
+  <body onload="init();">
+    <div id="msgContainer" class="absolute top-0 left-0 right-0 bottom-50 overflow-scroll"></div>
+    <div class="absolute bottom-0 right-300 left-0 height-50 z-2">
+      <div id="inputWrapper" class="absolute left-0 right-0 top-0 bottom-0">
+        <input id="chatInput" class="border-box full-width height-50 size-14 padding-left-10" />
+      </div>
+    </div>
+    <div id="rightBar" class="absolute top-0 bottom-0 right-0 width-300 background-green"></div>
+    <div id="templates" class="hide"></div>
+  </body>
+</html>

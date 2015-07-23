@@ -7,6 +7,14 @@ var init = function(){
   initTemplates();
   initKeyBindings();
   initSockBindings();
+  authUser(socket);
+};
+
+var authUser = function(socket){
+  if(getCookie('token') != '' && getCookie('uname') != '')
+  {
+    socket.emit('auth', {uname: getCookie('uname'), token: getCookie('token')});
+  }
 };
 
 var loadTemplate = function(key, vars){
@@ -26,6 +34,7 @@ var initKeyBindings = function(){
 
 var initSockBindings = function(){
   socket.on('rcv', function(msg){
+    console.log(msg);
     $('#msgContainer').append(loadTemplate('msgTemplate', msg));
   });
 };
@@ -44,3 +53,14 @@ var initTemplates = function(){
     }
   });
 };
+
+var getCookie = function(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i<ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1);
+      if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+  }
+  return "";
+}

@@ -2,8 +2,10 @@
 <html>
   <head>
     <title>Hello World!</title>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="./script/app.js"></script>
   </head>
-  <body>
+  <body onload="init();">
     <h1>Hello World!</h1>
     We are using io.js <script>document.write(process.version)</script>
     and Electron <script>document.write(process.versions['electron'])</script>.

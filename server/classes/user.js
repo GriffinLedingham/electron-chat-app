@@ -31,8 +31,6 @@ module.exports = function(socket, io, db) {
 
   this.constructor.prototype.initSockBindings = function(){
     this.socket.on('send',function(msg){
-      console.log(msg);
-      console.log(that);
       if(that.alias != null)
       {
         var payload = {

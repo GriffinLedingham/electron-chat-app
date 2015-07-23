@@ -51,12 +51,7 @@ var setExpressRoutes = function(db){
     userModel.loginUser(req.body.username,req.body.password,function(response,token){
       if(response === true)
       {
-        if(typeof token !== 'undefined' && token !== null)
-        {
-          res.cookie('token', token, { domain: null, maxAge: 86400000});
-          res.cookie('uname', req.body.username, { domain: null, maxAge: 86400000});
-        }
-        res.send(response);
+        res.send({result: true, uname: req.body.username, token: token});
         res.end();
       }
       else

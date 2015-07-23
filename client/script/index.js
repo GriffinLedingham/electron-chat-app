@@ -5,14 +5,16 @@ var init = function() {
 };
 
 var autoLogin = function(){
-  if(getCookie('token') != '' && getCookie('uname') != '') {
+  if(getCookie('token') != false && getCookie('token') != 'undefined'
+    && getCookie('uname') != false && getCookie('uname') != 'undefined') {
     $.ajax({
       url:'http://localhost:3000/session',
       type:'POST',
       datatype:'json',
       data:{username:getCookie('uname'),token: getCookie('token')},
       success: function(data){
-        console.log(data);
+        localStorage.setItem('uname', data.uname);
+        localStorage.setItem('token', data.token);
         window.location.replace('app.html');
       }
     });
@@ -38,18 +40,18 @@ var submitData = function(){
     datatype:'json',
     data:{username:$('#username').val(),password:$('#password').val()},
     success: function(data){
+      localStorage.setItem('uname', data.uname);
+      localStorage.setItem('token', data.token);
       window.location.replace('app.html');
     }
   });
 };
 
 var getCookie = function(cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(';');
-  for(var i=0; i<ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0)==' ') c = c.substring(1);
-      if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+  var result = localStorage.getItem(cname);
+  if(result == 'undefined')
+  {
+    result = '';
   }
-  return "";
+  return result;
 }

@@ -26,7 +26,7 @@ app.on('ready', function() {
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname.replace('script', '') + '/index.html');
 
-  mainWindow.openDevTools();
+  // mainWindow.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {

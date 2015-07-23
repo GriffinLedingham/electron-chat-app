@@ -3,21 +3,27 @@ module.exports = function(socket, io) {
   this.socket = socket;
   this.uuid = generateUUID();
 
-  this.constructor.prototype.setUUID = function(){
-    this.uuid = this.uuid;
-  }
+  this.constructor.prototype.setUUID = function(uuid){
+    this.uuid = uuid;
+  };
 
-  this.constructor.prototype.setName = function(){
-    this.alias = this.alias;
-  }
+  this.constructor.prototype.setName = function(alias){
+    this.alias = alias;
+  };
 
   this.constructor.prototype.getUUID = function(){
     return this.uuid;
-  }
+  };
 
   this.constructor.prototype.getName = function(){
     return this.alias;
-  }
+  };
+
+  this.constructor.prototype.getData = function(){
+    return {
+      uuid: this.uuid
+    };
+  };
 
   this.constructor.prototype.initSockBindings = function(){
     this.socket.on('send',function(msg){

@@ -4,6 +4,7 @@
   "dependencies": {
     "express": "*",
     "http": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "mongodb": "*"
   }
 }

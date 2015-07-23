@@ -1,0 +1,9 @@
+{
+  "name": "electron-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "handlebars": "*",
+    "jquery": "*"
+  },
+  "private": true
+}

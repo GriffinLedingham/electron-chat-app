@@ -4,10 +4,20 @@
     <title>Hello World!</title>
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script src="./script/app.js"></script>
+    <script src="./vendor/jquery/dist/jquery.min.js"></script>
+    <script src="./vendor/handlebars/handlebars.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
   </head>
   <body onload="init();">
-    <h1>Hello World!</h1>
-    We are using io.js <script>document.write(process.version)</script>
-    and Electron <script>document.write(process.versions['electron'])</script>.
+    <div class="absolute top-0 left-0 right-0 bottom-50">
+
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 height-50 z-2 full-shadow">
+      <div id="inputWrapper" class="absolute left-0 right-100 top-0 bottom-0">
+        <input id="chatInput" class="full-width height-44 size-30" />
+      </div>
+      <div id="sendButton" class="absolute right-0 width-100 top-0 bottom-0 background-black">
+      </div>
+    </div>
   </body>
 </html>

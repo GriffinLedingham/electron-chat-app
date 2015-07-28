@@ -82,8 +82,21 @@ div {
   padding: 20px;
 }
 
+.chat-msg-img {
+  height:40px;
+  margin-top: 10px;
+}
+
 .chat-msg-uname {
   font-weight:bold;
+  top: -12px;
+  margin-left:10px;
+  position: relative;
+}
+
+.chat-msg-text {
+  top:-12px;
+  position: relative;
 }
 
 /* -------- End Chat */

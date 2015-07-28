@@ -1,4 +1,5 @@
 var UserModel = require('../models/user_model.js');
+var md5 = require('md5');
 
 module.exports = function(socket, io, db) {
   var that = this;
@@ -6,6 +7,7 @@ module.exports = function(socket, io, db) {
   this.uuid = generateUUID();
   this.alias = null;
   this.token = null;
+  this.email = null;
 
   this.constructor.prototype.setUUID = function(uuid){
     this.uuid = uuid;
@@ -36,7 +38,9 @@ module.exports = function(socket, io, db) {
         var payload = {
           msg: msg,
           uuid: that.uuid,
-          uname: that.alias
+          uname: that.alias,
+          img: 'http://www.gravatar.com/avatar/' + md5(that.email.toLowerCase())
+
         };
         io.sockets.emit('rcv', payload);
       }
@@ -55,6 +59,7 @@ module.exports = function(socket, io, db) {
           {
             that.alias = user.uname;
             that.token = user.token;
+            that.email = user.email;
           }
         }
       });

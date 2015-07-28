@@ -61,10 +61,8 @@ var setExpressRoutes = function(db){
               res.send({result: true, uname: req.body.username, token: token});
               res.end();
             })
-            
           }
-        }); 
-        
+        });        
       }
       else
       {

@@ -28,7 +28,7 @@ module.exports = function(db) {
 
   this.constructor.prototype.updateUser = function(user, callback){
     var collection = db.collection('users');
-    collection.update({uname: user.uname}, { $set: user }, function(err, result){
+    collection.update({uname: user.uname}, { $set: user }, function(err, result){    
       callback();
     });
   };

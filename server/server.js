@@ -51,8 +51,20 @@ var setExpressRoutes = function(db){
     userModel.loginUser(req.body.username,req.body.password,function(response,token){
       if(response === true)
       {
-        res.send({result: true, uname: req.body.username, token: token});
-        res.end();
+        userModel.getUserDataObject(req.body.username, function(docs){
+          if(docs.length == 1)
+          {
+            var user = docs[0];
+            user.token = token;
+            delete user._id;
+            userModel.updateUser(user, function(){
+              res.send({result: true, uname: req.body.username, token: token});
+              res.end();
+            })
+            
+          }
+        }); 
+        
       }
       else
       {

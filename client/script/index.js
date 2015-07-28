@@ -5,8 +5,8 @@ var init = function() {
 };
 
 var autoLogin = function(){
-  if(getCookie('token') != false && getCookie('token') != 'undefined'
-    && getCookie('uname') != false && getCookie('uname') != 'undefined') {
+  if(getCookie('token') != false && getCookie('token') != 'undefined' && getCookie('token') != '' && getCookie('token') != null
+    && getCookie('uname') != false && getCookie('uname') != 'undefined' && getCookie('uname') != '' && getCookie('uname') != null) {
     $.ajax({
       url:'http://localhost:3000/session',
       type:'POST',
